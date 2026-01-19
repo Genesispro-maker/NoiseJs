@@ -42,9 +42,9 @@ const AV = new AudioClass({
     src: ["/plenty.mp3"],
     volume: 1,
     pan: 1,
-    loop: true
+    loop: true,
 })
 
 btn.addEventListener("click", () => {
-    AV.play()
+   AV.play()
 })
