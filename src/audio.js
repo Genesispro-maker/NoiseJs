@@ -7,7 +7,7 @@ class AudioClass {
     #panner
     #source
     #loop
-    constructor({ src = [], volume = 1, pan = 0, loop = true}) {
+    constructor({ src, volume = 1, pan = 0, loop = true}) {
         this.#context = new AudioContext()
         this.#audio = new Audio(src)
         this.#loop = this.#audio.loop = loop;
@@ -33,18 +33,3 @@ class AudioClass {
         this.#audio.pause()
     }   
 }
-
-
-
-const btn = document.querySelector("button")
-
-const AV = new AudioClass({
-    src: ["/plenty.mp3"],
-    volume: 1,
-    pan: 1,
-    loop: true
-})
-
-btn.addEventListener("click", () => {
-    AV.play()
-})
