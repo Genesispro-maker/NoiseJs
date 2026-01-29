@@ -1,4 +1,4 @@
-export default class Noise {
+class Noise {
     audioContext;
     gainNode;
     panner;
@@ -29,4 +29,16 @@ export default class Noise {
         this.audio.pause();
     }
 }
+
+
+const noises = new Noise({
+    src: "/src/plenty.mp3",
+    loop: true,
+})
+
+const playbtn = document.querySelector("button")
+
+playbtn.addEventListener("click", () => {
+   noises.play()
+})
 //# sourceMappingURL=audio.js.map
