@@ -1,4 +1,5 @@
-class Noise {
+import { formatTime } from "./formatTime";
+export default class Noise {
     audioContext;
     gainNode;
     panner;
@@ -29,16 +30,4 @@ class Noise {
         this.audio.pause();
     }
 }
-
-
-const noises = new Noise({
-    src: "/src/plenty.mp3",
-    loop: true,
-})
-
-const playbtn = document.querySelector("button")
-
-playbtn.addEventListener("click", () => {
-   noises.play()
-})
 //# sourceMappingURL=audio.js.map
