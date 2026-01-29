@@ -1,3 +1,5 @@
+import { formatTime } from "./formatTime"
+
 export default class Noise{
     private audioContext : AudioContext
     private gainNode : GainNode
