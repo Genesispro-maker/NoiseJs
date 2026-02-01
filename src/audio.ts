@@ -22,7 +22,7 @@ export default class Noise{
     private panner : StereoPannerNode
     private Source : MediaElementAudioSourceNode
     private loop : boolean
-    private audio: HTMLAudioElement
+    public audio: HTMLAudioElement
     public duration: string | undefined | void
     public currentTime: string | undefined
 
@@ -61,5 +61,9 @@ const noise = new Noise({
 })
 
 noise.play()
+noise.audio.addEventListener("loadedmetadata", () => {
+  console.log(noise.duration)
+})
+
 
 const play = document.querySelector(".play") as HTMLElement

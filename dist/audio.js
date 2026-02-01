@@ -42,8 +42,8 @@ const noise = new Noise({
     src: "/plenty.mp3",
 });
 noise.play();
-const h1 = document.createElement("h1");
-h1.textContent = `${noise.duration}`;
-document.body.append(h1);
+noise.audio.addEventListener("loadedmetadata", () => {
+    console.log(noise.duration);
+});
 const play = document.querySelector(".play");
 //# sourceMappingURL=audio.js.map
