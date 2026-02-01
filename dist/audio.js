@@ -41,12 +41,9 @@ export default class Noise {
 const noise = new Noise({
     src: "/plenty.mp3",
 });
+noise.play();
+const h1 = document.createElement("h1");
+h1.textContent = `${noise.duration}`;
+document.body.append(h1);
 const play = document.querySelector(".play");
-play.addEventListener("click", () => {
-    noise.play();
-    console.log(noise.duration);
-    const h1 = document.createElement("h1");
-    h1.textContent = `${noise.duration}`;
-    document.body.append(h1);
-});
 //# sourceMappingURL=audio.js.map
