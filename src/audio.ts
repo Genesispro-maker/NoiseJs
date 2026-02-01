@@ -61,8 +61,5 @@ const noise = new Noise({
 })
 
 noise.play()
-const h1 = document.createElement("h1")
-h1.textContent = `${noise.duration}`
-document.body.append(h1)
 
 const play = document.querySelector(".play") as HTMLElement
