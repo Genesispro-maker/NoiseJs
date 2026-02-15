@@ -14,11 +14,12 @@ export default class Noise {
     loop;
     audio;
     metaData = [];
-    constructor({ src, volume = 1, pan = 0, loop = false }) {
+    constructor({ src, mute = false, volume = 1, pan = 0, loop = false }) {
         this.audioContext = new AudioContext();
         this.audio = new Audio(src);
         this.metaData = [];
         this.loop = this.audio.loop = loop;
+        this.audio.muted = mute;
         this.Source = this.audioContext.createMediaElementSource(this.audio);
         this.gainNode = this.audioContext.createGain();
         this.panner = new StereoPannerNode(this.audioContext);
@@ -33,7 +34,7 @@ export default class Noise {
                 duration: formatTime(this.audio.duration),
                 currentTime: formatTime(this.audio.currentTime),
                 title: this.audio.src.split("/").pop(),
-                fileExt: this.audio.src.split(".").pop()
+                fileExt: this.audio.src.split(".").pop(),
             };
             this.notifyEventListners(metadatas);
         });
@@ -58,12 +59,14 @@ export default class Noise {
     }
 }
 const noise = new Noise({
-    src: "/plenty.mp3",
-    loop: true
+    src: "/plenty_By_Burna_boy.mp3",
+    loop: true,
+    mute: false,
 });
 noise.onLoadedmetadata((data) => {
     console.log(data.duration);
     console.log(data.currentTime);
+    console.log(data.title);
 });
 const play = document.querySelector(".play");
 play.addEventListener("click", () => {

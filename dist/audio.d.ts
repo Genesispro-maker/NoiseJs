@@ -3,6 +3,7 @@ type NoiseType = {
     volume: number;
     pan: number;
     loop: boolean;
+    mute: boolean;
 };
 interface Metadata {
     title: string | undefined;
@@ -16,12 +17,12 @@ export default class Noise {
     private panner;
     private Source;
     private loop;
-    audio: HTMLAudioElement;
-    metaData: Array<(metadata: Metadata) => void>;
-    constructor({ src, volume, pan, loop }: Partial<NoiseType>);
+    private audio;
+    private metaData;
+    constructor({ src, mute, volume, pan, loop }: Partial<NoiseType>);
     private init;
     onLoadedmetadata(callback: (metadata: Metadata) => void): number | this;
-    notifyEventListners(metadata: Metadata): void;
+    private notifyEventListners;
     play(): Promise<void>;
     pause(): void;
 }
