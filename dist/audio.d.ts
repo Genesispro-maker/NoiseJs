@@ -11,8 +11,11 @@ export default class Noise {
     private Source;
     private loop;
     audio: HTMLAudioElement;
-    currentTime: string | undefined;
+    metaData: [];
     constructor({ src, volume, pan, loop }: Partial<NoiseType>);
+    init(): void;
+    onLoadedmetadata(callback: Function): Function;
+    notifyEventListners(metadata: any): void;
     play(): Promise<void>;
     pause(): void;
 }
