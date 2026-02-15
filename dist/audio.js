@@ -72,8 +72,4 @@ const play = document.querySelector(".play");
 play.addEventListener("click", () => {
     noise.play();
 });
-const number = [43, 5, 6, 29].findIndex(nums => {
-    return nums === 29;
-});
-console.log(number);
 //# sourceMappingURL=audio.js.map
