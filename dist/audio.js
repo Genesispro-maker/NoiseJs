@@ -1,4 +1,3 @@
-import {} from "./type";
 function formatTime(time) {
     if (isNaN(time))
         return;
@@ -60,9 +59,14 @@ export default class Noise {
 }
 const noise = new Noise({
     src: "/plenty.mp3",
+    loop: true
 });
-noise.onLoadedmetadata((metadata) => {
-    console.log(metadata.duration);
+noise.onLoadedmetadata((data) => {
+    console.log(data.duration);
+    console.log(data.currentTime);
 });
 const play = document.querySelector(".play");
+play.addEventListener("click", () => {
+    noise.play();
+});
 //# sourceMappingURL=audio.js.map

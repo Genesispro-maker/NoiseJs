@@ -1,5 +1,3 @@
-import { type Metadata } from "./type";
-
 type NoiseType = {
     src: string,
     volume: number,
@@ -7,6 +5,12 @@ type NoiseType = {
     loop: boolean,
 }
 
+interface Metadata {
+    title: string | undefined,
+    duration: string | undefined,
+    fileExt: string | undefined,
+    currentTime: string | undefined
+}
 function formatTime(time: number) {
   if (isNaN(time)) return;
 
@@ -24,8 +28,8 @@ export default class Noise{
     private panner : StereoPannerNode
     private Source : MediaElementAudioSourceNode
     private loop : boolean
-    public audio: HTMLAudioElement
-    public metaData: Array<(metadata: Metadata) => void> = []
+    private audio: HTMLAudioElement
+    private metaData: Array<(metadata: Metadata) => void> = []
 
 
     constructor({src, volume = 1, pan = 0, loop = false}: Partial<NoiseType>){
@@ -45,7 +49,7 @@ export default class Noise{
     }
 
 
-    init(){
+    private init(){
         this.audio.addEventListener("loadedmetadata", () => {
             const metadatas : Metadata = {
                 duration: formatTime(this.audio.duration),
@@ -65,7 +69,7 @@ export default class Noise{
         return this
     }
 
-    notifyEventListners(metadata: Metadata): void{
+   private notifyEventListners(metadata: Metadata): void{
         this.metaData.forEach((listner) => {
            listner(metadata)
         })
@@ -86,13 +90,12 @@ export default class Noise{
 
 const noise = new Noise({
     src: "/plenty.mp3",
+    loop: true
 })
 
-noise.onLoadedmetadata((metadata) => {
-    console.log(metadata.duration)
-    console.log(metadata.currentTime)
-    console.log(metadata.fileExt)
-    console.log(metadata.title)
+noise.onLoadedmetadata((data) => {
+    console.log(data.duration)
+    console.log(data.currentTime)
 })
 
 
