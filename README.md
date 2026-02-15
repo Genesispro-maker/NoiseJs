@@ -108,18 +108,10 @@ bgMusic.play()
 ````
 
 # 🔮 Future Updates
- npm release
+. npm release
+ 
+. Publish to npm
 
- Add test coverage
+. Expand audio control features
 
- Improve documentation
-
- Add additional audio utilities
-
-Clean up legacy structure
-
-Publish to npm
-
-Expand audio control features
-
-Improve event handling
+. Improve event handling
