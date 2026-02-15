@@ -65,8 +65,8 @@ export default class Noise{
         return this
     }
 
-    notifyEventListners(metadata: Metadata){
-        this.metaData.forEach((listner: never) => {
+    notifyEventListners(metadata: Metadata): void{
+        this.metaData.forEach((listner) => {
            listner(metadata)
         })
     }

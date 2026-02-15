@@ -1,3 +1,4 @@
+import { type Metadata } from "./type";
 type NoiseType = {
     src: string;
     volume: number;
@@ -11,11 +12,11 @@ export default class Noise {
     private Source;
     private loop;
     audio: HTMLAudioElement;
-    metaData: [];
+    metaData: Array<(metadata: Metadata) => void>;
     constructor({ src, volume, pan, loop }: Partial<NoiseType>);
     init(): void;
-    onLoadedmetadata(callback: Function): Function;
-    notifyEventListners(metadata: any): void;
+    onLoadedmetadata(callback: (metadata: Metadata) => void): number | this;
+    notifyEventListners(metadata: Metadata): void;
     play(): Promise<void>;
     pause(): void;
 }

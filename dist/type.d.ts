@@ -1,4 +1,4 @@
-export interface metadata {
+export interface Metadata {
     title: string | undefined;
     duration: string | undefined;
     fileExt: string | undefined;

@@ -14,7 +14,7 @@ export default class Noise {
     Source;
     loop;
     audio;
-    metaData;
+    metaData = [];
     constructor({ src, volume = 1, pan = 0, loop = false }) {
         this.audioContext = new AudioContext();
         this.audio = new Audio(src);
@@ -46,7 +46,7 @@ export default class Noise {
         return this;
     }
     notifyEventListners(metadata) {
-        this.metaData.forEach(listner => {
+        this.metaData.forEach((listner) => {
             listner(metadata);
         });
     }
