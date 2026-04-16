@@ -13,7 +13,6 @@ interface Metadata {
     currentTime: string | undefined
 }
 
-
 function formatTime(time: number) {
   if (isNaN(time)) return;
 
@@ -83,14 +82,12 @@ export default class Noise{
         })
     }
 
-
     onLoadedmetadata(callback: (metadata: Metadata) => void): number | this{
         if(typeof callback === "function"){
             return this.metaData.push(callback)
         }
         return this
     }
-
 
     async play(){
         await this.audioContext.resume()
