@@ -84,7 +84,7 @@ export default class Noise{
     }
 
 
-    onLoadedmetadata(callback: (metadata: Metadata) => void): number | this{
+    onLoadedMetadata(callback: (metadata: Metadata) => void): number | this{
         if(typeof callback === "function"){
             return this.metaData.push(callback)
         }
