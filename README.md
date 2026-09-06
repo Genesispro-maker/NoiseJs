@@ -1,120 +1,138 @@
-# 🎶 Noise Js
+# 🎶 Noise.js
 
-Noise Js is a lightweight JavaScript audio library designed to make audio integration in web projects simple and straightforward.
+A lightweight, dependency-free JavaScript audio library for simple, straightforward audio integration in web projects.
 
-Personal project. Not published on npm (yet).
+![status](https://img.shields.io/badge/status-personal--project-informational)
+![npm](https://img.shields.io/badge/npm-not%20published%20yet-lightgrey)
+![license](https://img.shields.io/badge/license-MIT-green)
 
-# ✨ Features
+> Personal project. Not published on npm yet.
 
-Simple and minimal API
+## Table of Contents
 
-Easy audio playback control
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Constructor Options](#constructor-options)
+- [Methods](#methods)
+- [Example](#example)
+- [Roadmap](#roadmap)
+- [License](#license)
 
-Configurable audio properties
+## Features
 
-Lightweight and dependency-free
+- Simple, minimal API
+- Easy audio playback control
+- Configurable audio properties (volume, pan, loop, mute)
+- Lightweight and dependency-free
+- Metadata load event support
+- Written in TypeScript
 
-Metadata load event support
+## Installation
 
-# 📦 Installation
+Noise.js isn't on npm yet. Clone it directly:
 
-Noise Js is not currently available on npm.
-
-Clone the repository:
-
-````````
-https://github.com/Genesispro-maker/Noisejs.git
-````````
+```bash
+git clone https://github.com/Genesispro-maker/Noisejs.git
+```
 
 Then include it in your project:
 
-Using a <script> tag
+**Using a `<script>` tag**
 
-`````js
+```html
 <script src="path/to/noise.js"></script>
-`````
+```
 
-Using ES Modules
+**Using ES Modules**
 
-import Noise from "./noise.js"
+```js
+import Noise from "./noise.js";
+```
 
-
-# 🚀 Usage
-
-Creating an instance
+## Usage
 
 ```js
 const noise = new Noise({
   src: "audio.mp3",
-  volume: 0.5
-})
+  volume: 0.5,
+});
 
-noise.play()
+noise.play();
 ```
 
-# ⚙️ Constructor Options
-Property	Type	Default	Description
+## Constructor Options
 
-`src`:	 string	required Path to the audio file
+| Property | Type      | Default | Description                     |
+|----------|-----------|---------|----------------------------------|
+| `src`    | `string`  | —       | Path to the audio file (required) |
+| `mute`   | `boolean` | `false` | Mutes the audio                 |
+| `volume` | `number`  | `1`     | Volume level (0 to 1)           |
+| `pan`    | `number`  | `0`     | Stereo pan (-1 left to 1 right) |
+| `loop`   | `boolean` | `false` | Whether the audio should loop   |
 
-`mute`:  boolean false	Mutes the audio
+## Methods
 
-`volume`: number	1	Volume level (0 to 1)
-
-`pan`: number 0	Stereo pan (-1 left to 1 right)
-
-`loop`: boolean false	Whether the audio should loop
-
-# 🎛 Methods
-
-play()
+### `play()`
 
 Plays the audio.
-````js
-noise.play()
-`````
 
-pause()
+```js
+noise.play();
+```
+
+### `pause()`
 
 Pauses the audio.
-````js
-noise.pause()
-`````
-````js
-onLoadedmetadata(callback)
-`````
+
+```js
+noise.pause();
+```
+
+### `disconnect`
+
+Disconnects audio nodes so the audio graphs built are destroyed or disconnected in the computer to avoid memory leaks.
+
+```js
+noise.disconnect();
+```
+
+### `onLoadedMetadata(callback)`
 
 Fires when the audio metadata has finished loading.
-`````js
-noise.onLoadedmetadata((data) => {
-  console.log("Metadata loaded")
-  console.log("name", data.name)
-})
-`````
 
-# 🛠 Example
-``````js
+```js
+noise.onLoadedMetadata((data) => {
+  console.log("Metadata loaded");
+  console.log("name", data.name);
+});
+```
+
+## Example
+
+```js
 const bgMusic = new Noise({
   src: "background.mp3",
   volume: 0.5,
-  loop: true
-})
-``````
-````js
-bgMusic.onLoadedmetadata((data) => {
-  console.log("Audio ready")
-  console.log(data.title)
-  console.log(data.currentTime)
-})
+  loop: true,
+});
 
-bgMusic.play()
-````
+bgMusic.onLoadedMetadata((data) => {
+  console.log("Audio ready");
+  console.log(data.title);
+  console.log(data.currentTime);
+});
 
-# 🔮 Future Updates
-. Publish to npm
+bgMusic.play();
+```
 
-. Expand audio control features
+## Roadmap
 
-. Improve event handling
+- [ ] Publish to npm
+- [ ] Expand audio control features
+- [ ] Improve event handling
+- [ ] Build a full audio component library
 
-. Build An Audio Component Library
+## License
+
+MIT — see [LICENSE](LICENSE) for details.

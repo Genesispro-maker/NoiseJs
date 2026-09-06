@@ -59,8 +59,7 @@ export default class Noise{
         
         this.Source.connect(this.panner).connect(this.gainNode).connect(this.audioContext.destination)
     }
-
-
+    
     private init(){
         this.audio.addEventListener("loadedmetadata", () => {
             const metadatas : Metadata = {
@@ -74,14 +73,13 @@ export default class Noise{
         })
     }
 
-
     private notifyEventListners(metadata: Metadata): void{
         this.metaData.forEach((listner) => {
            listner(metadata)
         })
     }
 
-    onLoadedmetadata(callback: (metadata: Metadata) => void): number | this{
+    onLoadedMetadata(callback: (metadata: Metadata) => void): number | this{
         if(typeof callback === "function"){
             return this.metaData.push(callback)
         }
