@@ -33,7 +33,6 @@ export default class Noise{
     private audio: HTMLAudioElement
     private metaData: Array<(metadata: Metadata) => void> = []
 
-
     constructor({src, mute = false, volume = 1, pan = 0, loop = false}: Partial<NoiseType>){
         this.audioContext = new AudioContext()
 
@@ -95,8 +94,12 @@ export default class Noise{
         this.audio.play()
     }
 
-
     pause(){
         this.audio.pause()
+    }
+
+    disconnect(){
+        this.Source.disconnect()
+        this.gainNode.disconnect()
     }
 }
